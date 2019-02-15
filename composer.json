@@ -1,6 +1,6 @@
 {
     "name": "suitmedia/frontend-lighthouse-audit",
-    "description": "",
+    "description": "A PHP package to automate the Lighthouse Auditing for frontend development.",
     "type": "library",
     "license": "MIT",
     "homepage": "https://github.com/suitmedia/frontend-lighthouse-audit",
