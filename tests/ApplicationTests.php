@@ -16,7 +16,7 @@ class ApplicationTests extends TestCase
     protected $application;
 
     /**
-     * Setup test environment
+     * Setup test environment.
      */
     public function setUp()
     {
@@ -29,12 +29,12 @@ class ApplicationTests extends TestCase
             '--except=",_header.php,footer.html,script.php,,"',
             '--url-prefix="http://localhost:8000/"',
             '--chrome-flags="--one --two "',
-            '--performance=' . Command::DEFAULT_PERFORMANCE,
-            '--best-practices=' . Command::DEFAULT_BEST_PRACTICES,
-            '--accessibility=' . Command::DEFAULT_ACCESSIBILITY,
-            '--seo=' . Command::DEFAULT_SEO,
-            '--pwa=' . Command::DEFAULT_PWA,
-            __DIR__ . '/Fixtures/frontend'
+            '--performance='.Command::DEFAULT_PERFORMANCE,
+            '--best-practices='.Command::DEFAULT_BEST_PRACTICES,
+            '--accessibility='.Command::DEFAULT_ACCESSIBILITY,
+            '--seo='.Command::DEFAULT_SEO,
+            '--pwa='.Command::DEFAULT_PWA,
+            __DIR__.'/Fixtures/frontend',
         ], $command->getDefinition());
 
         $this->application = new Application();

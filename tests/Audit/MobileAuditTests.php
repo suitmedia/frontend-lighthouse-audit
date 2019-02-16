@@ -28,12 +28,12 @@ class MobileAuditTests extends TestCase
             'lighthouse-audit',
             '--url-prefix="http://localhost:8000/"',
             '--chrome-flags="--one --two "',
-            '--performance=' . Command::DEFAULT_PERFORMANCE,
-            '--best-practices=' . Command::DEFAULT_BEST_PRACTICES,
-            '--accessibility=' . Command::DEFAULT_ACCESSIBILITY,
-            '--seo=' . Command::DEFAULT_SEO,
-            '--pwa=' . Command::DEFAULT_PWA,
-            dirname(__DIR__, 2)
+            '--performance='.Command::DEFAULT_PERFORMANCE,
+            '--best-practices='.Command::DEFAULT_BEST_PRACTICES,
+            '--accessibility='.Command::DEFAULT_ACCESSIBILITY,
+            '--seo='.Command::DEFAULT_SEO,
+            '--pwa='.Command::DEFAULT_PWA,
+            dirname(__DIR__, 2),
         ], $command->getDefinition());
 
         $this->audit = new MobileAudit(
@@ -51,11 +51,11 @@ class MobileAuditTests extends TestCase
             'lighthouse-ci',
             'http://localhost:8000/index.html',
             '--chrome-flags="--no-sandbox --headless --disable-gpu --cellular-only --window-size=375,667 --one --two"',
-            '--performance=' . Command::DEFAULT_PERFORMANCE,
-            '--best-practices=' . Command::DEFAULT_BEST_PRACTICES,
-            '--accessibility=' . Command::DEFAULT_ACCESSIBILITY,
-            '--seo=' . Command::DEFAULT_SEO,
-            '--pwa=' . Command::DEFAULT_PWA,
+            '--performance='.Command::DEFAULT_PERFORMANCE,
+            '--best-practices='.Command::DEFAULT_BEST_PRACTICES,
+            '--accessibility='.Command::DEFAULT_ACCESSIBILITY,
+            '--seo='.Command::DEFAULT_SEO,
+            '--pwa='.Command::DEFAULT_PWA,
             '--emulated-form-factor=mobile',
             '--throttling-method=devtools',
         ];

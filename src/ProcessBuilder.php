@@ -11,6 +11,7 @@ class ProcessBuilder
      * the given command strings.
      *
      * @param array $command
+     *
      * @return Process
      */
     public function create(array $command) :Process

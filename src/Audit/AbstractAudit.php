@@ -43,10 +43,10 @@ abstract class AbstractAudit
     /**
      * AbstractProcess constructor.
      *
-     * @param ProcessBuilder $processBuilder
-     * @param InputInterface $input
+     * @param ProcessBuilder  $processBuilder
+     * @param InputInterface  $input
      * @param OutputInterface $output
-     * @param string $filename
+     * @param string          $filename
      */
     public function __construct(ProcessBuilder $processBuilder, InputInterface $input, OutputInterface $output, string $filename)
     {
@@ -55,7 +55,7 @@ abstract class AbstractAudit
         $this->output = $output;
         $this->filename = $filename;
 
-        $this->url = $this->getUrlPrefix() . $this->filename;
+        $this->url = $this->getUrlPrefix().$this->filename;
     }
 
     /**
@@ -67,9 +67,9 @@ abstract class AbstractAudit
     {
         $command = [
             'lighthouse-ci',
-            $this->url
+            $this->url,
         ];
-        $command[] = '--chrome-flags="'. implode(' ', $this->getChromeFlags()) .'"';
+        $command[] = '--chrome-flags="'.implode(' ', $this->getChromeFlags()).'"';
 
         return array_merge($command, $this->getCommandOptions());
     }
@@ -82,12 +82,12 @@ abstract class AbstractAudit
     protected function getCommandOptions() :array
     {
         return [
-            '--performance='. $this->getPerformanceScore(),
-            '--best-practices='. $this->getBestPracticesScore(),
-            '--accessibility='. $this->getAccessibilityScore(),
-            '--seo='. $this->getSeoScore(),
-            '--pwa='. $this->getPwaScore(),
-            '--emulated-form-factor=' . $this->getMode(),
+            '--performance='.$this->getPerformanceScore(),
+            '--best-practices='.$this->getBestPracticesScore(),
+            '--accessibility='.$this->getAccessibilityScore(),
+            '--seo='.$this->getSeoScore(),
+            '--pwa='.$this->getPwaScore(),
+            '--emulated-form-factor='.$this->getMode(),
             '--throttling-method=devtools',
         ];
     }
@@ -105,8 +105,9 @@ abstract class AbstractAudit
     /**
      * Run the process.
      *
-     * @return bool
      * @throws \Exception
+     *
+     * @return bool
      */
     public function run() :bool
     {

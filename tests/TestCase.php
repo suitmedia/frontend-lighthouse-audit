@@ -84,7 +84,7 @@ abstract class TestCase extends AbstractTestCase
      *
      * @param mixed  $object
      * @param string $propertyName
-     * @param mixed $value
+     * @param mixed  $value
      *
      * @throws \ReflectionException If no property exists by that name.
      *
@@ -128,7 +128,7 @@ abstract class TestCase extends AbstractTestCase
 
         $this->input = \Mockery::mock(ArgvInput::class);
         $this->output = \Mockery::mock(ConsoleOutput::class);
-        $this->process = \Mockery::mock(Process::class . '[run,isSuccessful]', ['ls', '-alh']);
+        $this->process = \Mockery::mock(Process::class.'[run,isSuccessful]', ['ls', '-alh']);
         $this->processBuilder = \Mockery::mock(ProcessBuilder::class);
     }
 }

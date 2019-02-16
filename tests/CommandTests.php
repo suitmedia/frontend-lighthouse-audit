@@ -77,7 +77,7 @@ class CommandTests extends TestCase
             ->andReturn('",_header.php,footer.html,script.php,,"');
 
         $this->input->shouldReceive('getArgument')
-            ->andReturn(__DIR__ . '/Fixtures/frontend');
+            ->andReturn(__DIR__.'/Fixtures/frontend');
 
         $this->input->shouldReceive('getOption')
             ->with('mode')

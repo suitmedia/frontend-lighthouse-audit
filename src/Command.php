@@ -107,10 +107,12 @@ final class Command extends AbstractCommand
      * execute() method, you set the code to execute by passing
      * a Closure to the setCode() method.
      *
-     * @param InputInterface $input
+     * @param InputInterface  $input
      * @param OutputInterface $output
-     * @return int
+     *
      * @throws LogicException|\Exception
+     *
+     * @return int
      */
     protected function execute(InputInterface $input, OutputInterface $output) :int
     {
@@ -144,6 +146,7 @@ final class Command extends AbstractCommand
      * Get the list of files that should be excluded from analysis.
      *
      * @param InputInterface $input
+     *
      * @return array
      */
     public function getExcludedFiles(InputInterface $input) :array
