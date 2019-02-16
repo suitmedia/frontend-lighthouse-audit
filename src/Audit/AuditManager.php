@@ -47,10 +47,10 @@ class AuditManager
     /**
      * AuditManager constructor.
      *
-     * @param ProcessBuilder $processBuilder
-     * @param InputInterface $input
+     * @param ProcessBuilder  $processBuilder
+     * @param InputInterface  $input
      * @param OutputInterface $output
-     * @param string $filename
+     * @param string          $filename
      */
     public function __construct(ProcessBuilder $processBuilder, InputInterface $input, OutputInterface $output, string $filename)
     {
@@ -76,13 +76,14 @@ class AuditManager
      * Get an audit instance.
      *
      * @param string|null $audit
+     *
      * @return AbstractAudit
      */
     public function audit(string $audit = null) :AbstractAudit
     {
         $audit = $audit ?: $this->getDefaultAudit();
 
-        if (! isset($this->audits[$audit])) {
+        if (!isset($this->audits[$audit])) {
             $this->audits[$audit] = $this->createAudit($audit);
         }
 
@@ -94,6 +95,7 @@ class AuditManager
      * the given audit name.
      *
      * @param string $audit
+     *
      * @return AbstractAudit
      */
     protected function createAudit(string $audit) :AbstractAudit
@@ -140,8 +142,9 @@ class AuditManager
     /**
      * Dynamically call the default audit instance.
      *
-     * @param  string  $method
-     * @param  array   $parameters
+     * @param string $method
+     * @param array  $parameters
+     *
      * @return mixed
      */
     public function __call($method, $parameters)

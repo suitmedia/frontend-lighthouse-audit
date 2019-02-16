@@ -106,6 +106,7 @@ class CanRetrieveInputValuesTests extends TestCase
      * @param $method
      * @param $key
      * @param $default
+     *
      * @throws \ReflectionException
      */
     protected function dynamicGetDefaultTest($method, $key, $default)
@@ -126,6 +127,7 @@ class CanRetrieveInputValuesTests extends TestCase
      * @param $method
      * @param $key
      * @param $value
+     *
      * @throws \ReflectionException
      */
     protected function dynamicRetrieveTest($method, $key, $value)
@@ -144,7 +146,7 @@ class CanRetrieveInputValuesTests extends TestCase
     public function it_can_retrieve_the_input_values()
     {
         $count = count(self::$methods);
-        for ($i=0; $i<$count; $i++) {
+        for ($i = 0; $i < $count; $i++) {
             $this->dynamicRetrieveTest(self::$methods[$i], self::$keys[$i], self::$values[$i]);
         }
     }
@@ -153,7 +155,7 @@ class CanRetrieveInputValuesTests extends TestCase
     public function it_can_return_the_default_values()
     {
         $count = count(self::$methods);
-        for ($i=0; $i<$count; $i++) {
+        for ($i = 0; $i < $count; $i++) {
             $this->dynamicGetDefaultTest(self::$methods[$i], self::$keys[$i], self::$defaults[$i]);
         }
     }

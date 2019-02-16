@@ -12,13 +12,13 @@ class AuditManagerTests extends TestCase
 {
     /**
      * Audit manager instance.
-     * 
+     *
      * @var AuditManager
      */
     protected $manager;
 
     /**
-     * Setup test environment
+     * Setup test environment.
      */
     public function setUp()
     {

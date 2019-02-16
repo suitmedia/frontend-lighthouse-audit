@@ -31,7 +31,7 @@ final class Application extends AbstractApplication
 
     /**
      * Disable XDebug. This method is copied from:
-     * https://github.com/sebastianbergmann/phpcpd/blob/ca6b97f32ebdd3585652a3035d6221a8d2a6c11b/src/CLI/Application.php#L87
+     * https://github.com/sebastianbergmann/phpcpd/blob/ca6b97f32ebdd3585652a3035d6221a8d2a6c11b/src/CLI/Application.php#L87.
      *
      * @return void
      */
@@ -50,10 +50,12 @@ final class Application extends AbstractApplication
     /**
      * Run the Lighthouse Audit application.
      *
-     * @param InputInterface $input
+     * @param InputInterface  $input
      * @param OutputInterface $output
-     * @return int
+     *
      * @throws \Throwable
+     *
+     * @return int
      */
     public function doRun(InputInterface $input, OutputInterface $output) :int
     {
@@ -64,9 +66,11 @@ final class Application extends AbstractApplication
 
     /**
      * Get Lighthouse Audit command name.
+     *
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      *
      * @param InputInterface $input
+     *
      * @return string
      */
     protected function getCommandName(InputInterface $input) :string
@@ -106,7 +110,7 @@ final class Application extends AbstractApplication
     /**
      * Gets the InputDefinition related to this Application.
      * This method is copied from :
-     * https://github.com/sebastianbergmann/phpcpd/blob/ca6b97f32ebdd3585652a3035d6221a8d2a6c11b/src/CLI/Application.php#L31
+     * https://github.com/sebastianbergmann/phpcpd/blob/ca6b97f32ebdd3585652a3035d6221a8d2a6c11b/src/CLI/Application.php#L31.
      *
      * @return InputDefinition
      */
@@ -128,6 +132,7 @@ final class Application extends AbstractApplication
         if ($this->processBuilder === null) {
             $this->processBuilder = new ProcessBuilder();
         }
+
         return $this->processBuilder;
     }
 

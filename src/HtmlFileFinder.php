@@ -44,7 +44,7 @@ class HtmlFileFinder
         }
 
         while (($file = readdir($dir)) !== false) {
-            if (is_dir($this->path . $file) || !$this->isHtmlFile($file)) {
+            if (is_dir($this->path.$file) || !$this->isHtmlFile($file)) {
                 continue;
             }
 
@@ -60,6 +60,7 @@ class HtmlFileFinder
      * Check if the given file is an HTML file.
      *
      * @param mixed $path
+     *
      * @return bool
      */
     protected function isHtmlFile($path) :bool
