@@ -99,7 +99,13 @@ abstract class AbstractAudit
      */
     protected function getDefaultChromeFlags() :array
     {
-        return ['--no-sandbox', '--headless', '--disable-gpu'];
+        return [
+            '--no-sandbox',
+            '--headless',
+            '--disable-gpu',
+            '--incognito',
+            '--disable-timeouts-for-profiling',
+        ];
     }
 
     /**

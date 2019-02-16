@@ -50,7 +50,7 @@ class MobileAuditTests extends TestCase
         $expected = [
             'lighthouse-ci',
             'http://localhost:8000/index.html',
-            '--chrome-flags="--no-sandbox --headless --disable-gpu --cellular-only --window-size=375,667 --one --two"',
+            '--chrome-flags="--cellular-only --disable-gpu --disable-timeouts-for-profiling --headless --incognito --no-sandbox --one --two --window-size=375,667"',
             '--performance='.Command::DEFAULT_PERFORMANCE,
             '--best-practices='.Command::DEFAULT_BEST_PRACTICES,
             '--accessibility='.Command::DEFAULT_ACCESSIBILITY,

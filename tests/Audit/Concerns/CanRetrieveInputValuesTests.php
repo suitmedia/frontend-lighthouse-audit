@@ -163,7 +163,8 @@ class CanRetrieveInputValuesTests extends TestCase
     /** @test */
     public function it_returns_default_chrome_flags_when_there_is_no_additional_flags()
     {
-        $expected = ['--no-sandbox', '--headless', '--disable-gpu', '--cellular-only', '--window-size=375,667'];
+        $expected = ['--no-sandbox', '--headless', '--disable-gpu', '--incognito', '--disable-timeouts-for-profiling', '--cellular-only', '--window-size=375,667'];
+        sort($expected);
         $this->input->shouldReceive('getOption')
             ->times(1)
             ->with('chrome-flags')
@@ -177,7 +178,8 @@ class CanRetrieveInputValuesTests extends TestCase
     /** @test */
     public function it_combines_default_chrome_flags_and_additional_flags()
     {
-        $expected = ['--no-sandbox', '--headless', '--disable-gpu', '--cellular-only', '--window-size=375,667', '--one', '--two'];
+        $expected = ['--no-sandbox', '--headless', '--disable-gpu', '--cellular-only', '--incognito', '--disable-timeouts-for-profiling', '--window-size=375,667', '--one', '--two'];
+        sort($expected);
         $this->input->shouldReceive('getOption')
             ->times(1)
             ->with('chrome-flags')

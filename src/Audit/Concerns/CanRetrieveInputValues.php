@@ -51,7 +51,10 @@ trait CanRetrieveInputValues
         $flags = is_string($flags) ? explode(' ', $this->trimDoubleQuotes($flags)) : [];
         $flags = array_filter(array_map('trim', $flags));
 
-        return array_unique(array_merge($this->getDefaultChromeFlags(), $flags));
+        $flags = array_unique(array_merge($this->getDefaultChromeFlags(), $flags));
+        sort($flags);
+
+        return $flags;
     }
 
     /**
@@ -112,20 +115,6 @@ trait CanRetrieveInputValues
         $score = $this->input->getOption('pwa');
 
         return $this->trimDoubleQuotes(is_string($score) ? $score : Command::DEFAULT_PWA);
-    }
-
-    /**
-     * Trim double quotes from input options.
-     *
-     * @param string $text
-     *
-     * @return string
-     */
-    protected function trimDoubleQuotes(string $text) :string
-    {
-        return ((strpos($text, '"') === 0) && ($text[strlen($text) - 1] === '"')) ?
-            substr($text, 1, -1) :
-            $text;
     }
 
     /**
