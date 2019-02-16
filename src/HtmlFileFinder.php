@@ -53,6 +53,8 @@ class HtmlFileFinder
 
         closedir($dir);
 
+        sort($files);
+
         return $files;
     }
 
