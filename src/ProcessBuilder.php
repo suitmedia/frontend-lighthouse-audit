@@ -17,7 +17,7 @@ class ProcessBuilder
     public function create(array $command) :Process
     {
         $process = new Process($command);
-        $process->setTimeout(0);
+        $process->setTimeout(90);
 
         return $process;
     }

@@ -15,6 +15,6 @@ class ProcessBuilderTests extends TestCase
 
         $this->assertInstanceOf(Process::class, $process);
         $this->assertEquals('\'ls\' \'-alh\'', $process->getCommandLine());
-        $this->assertEquals(0, $process->getTimeout());
+        $this->assertEquals(90, $process->getTimeout());
     }    
 }
