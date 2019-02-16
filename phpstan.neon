@@ -1,0 +1,10 @@
+includes:
+    - vendor/phpstan/phpstan-deprecation-rules/rules.neon
+
+parameters:
+    level: 7
+    ignoreErrors:
+            - '#Call to an undefined method Symfony\\Component\\Console\\Application::getProcessBuilder().#'
+            - '#Call to an undefined method Suitmedia\\LighthouseAudit\\Audit\\AuditManager::run().#'
+    paths:
+        - src
