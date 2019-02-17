@@ -10,7 +10,9 @@ trait CanResolveDocumentRoot
      * Validate and return the real document root path.
      *
      * @param mixed $path
+     *
      * @throws LogicException
+     *
      * @return string
      */
     public function getDocumentRoot($path) :string

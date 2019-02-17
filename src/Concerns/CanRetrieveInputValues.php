@@ -38,7 +38,7 @@ trait CanRetrieveInputValues
 
         $server = $this->trimDoubleQuotes(is_string($server) ? $server : Command::DEFAULT_SERVER);
 
-        return 'http://' . $server . '/';
+        return 'http://'.$server.'/';
     }
 
     /**
