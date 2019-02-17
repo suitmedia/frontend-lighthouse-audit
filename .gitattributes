@@ -10,6 +10,7 @@
 *.json text
 *.md text
 *.php text
+*.png binary
 *.txt text
 *.xml text
 *.yaml text
