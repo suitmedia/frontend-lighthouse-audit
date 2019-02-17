@@ -20,6 +20,7 @@ class HtmlFileFinder
      * HtmlFileFinder constructor.
      *
      * @param mixed $path
+     *
      * @throws LogicException
      */
     public function __construct($path)
