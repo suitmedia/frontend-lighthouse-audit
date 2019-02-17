@@ -1,6 +1,6 @@
 <?php
 
-namespace Suitmedia\LighthouseAudit\Audit\Concerns;
+namespace Suitmedia\LighthouseAudit\Concerns;
 
 use Suitmedia\LighthouseAudit\Command;
 
@@ -34,9 +34,11 @@ trait CanRetrieveInputValues
      */
     protected function getUrlPrefix() :string
     {
-        $prefix = $this->input->getOption('url-prefix');
+        $server = $this->input->getOption('server');
 
-        return $this->trimDoubleQuotes(is_string($prefix) ? $prefix : Command::DEFAULT_URL_PREFIX);
+        $server = $this->trimDoubleQuotes(is_string($server) ? $server : Command::DEFAULT_SERVER);
+
+        return 'http://' . $server . '/';
     }
 
     /**

@@ -56,9 +56,9 @@ class AuditManagerTests extends TestCase
             ->andReturn('desktop');
 
         $this->input->shouldReceive('getOption')
-            ->with('url-prefix')
+            ->with('server')
             ->times(1)
-            ->andReturn('http://localhost:8000/');
+            ->andReturn('localhost:8000');
 
         $actual = $this->manager->audit();
 
@@ -69,9 +69,9 @@ class AuditManagerTests extends TestCase
     public function it_can_provide_a_desktop_audit_instance()
     {
         $this->input->shouldReceive('getOption')
-            ->with('url-prefix')
+            ->with('server')
             ->times(1)
-            ->andReturn('http://localhost:8000/');
+            ->andReturn('localhost:8000');
 
         $actual = $this->manager->audit('desktop');
 
@@ -82,9 +82,9 @@ class AuditManagerTests extends TestCase
     public function it_can_provide_a_mobile_audit_instance()
     {
         $this->input->shouldReceive('getOption')
-            ->with('url-prefix')
+            ->with('server')
             ->times(1)
-            ->andReturn('http://localhost:8000/');
+            ->andReturn('localhost:8000');
 
         $actual = $this->manager->audit('mobile');
 

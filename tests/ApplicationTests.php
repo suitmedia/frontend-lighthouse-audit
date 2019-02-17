@@ -4,6 +4,7 @@ namespace Suitmedia\LighthouseAudit\Tests;
 
 use Suitmedia\LighthouseAudit\Application;
 use Suitmedia\LighthouseAudit\Command;
+use Suitmedia\LighthouseAudit\ProcessBuilder;
 use Symfony\Component\Console\Input\ArgvInput;
 
 class ApplicationTests extends TestCase
@@ -27,7 +28,7 @@ class ApplicationTests extends TestCase
         $this->input = new ArgvInput([
             'lighthouse-audit',
             '--except=",_header.php,footer.html,script.php,,"',
-            '--url-prefix="http://localhost:8000/"',
+            '--server="localhost:8000"',
             '--chrome-flags="--one --two "',
             '--performance='.Command::DEFAULT_PERFORMANCE,
             '--best-practices='.Command::DEFAULT_BEST_PRACTICES,
@@ -43,14 +44,28 @@ class ApplicationTests extends TestCase
     }
 
     /** @test */
+    public function it_can_create_process_builder_instance_automatically()
+    {
+        $this->application = new Application();
+        $this->application->setAutoExit(false);
+
+        $builder = $this->application->getProcessBuilder();
+
+        $this->assertNotNull($builder);
+        $this->assertInstanceOf(ProcessBuilder::class, $builder);
+    }
+
+    /** @test */
     public function it_can_be_run_successfully()
     {
         $this->output->shouldReceive('writeln');
 
         $this->processBuilder->shouldReceive('create')
             ->andReturn($this->process);
+        $this->process->shouldReceive('setTimeout');
         $this->process->shouldReceive('run')
             ->andReturn(0);
+        $this->process->shouldReceive('start');
         $this->process->shouldReceive('isSuccessful')
             ->andReturn(true);
 

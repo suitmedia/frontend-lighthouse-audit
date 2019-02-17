@@ -127,8 +127,8 @@ abstract class TestCase extends AbstractTestCase
         parent::setUp();
 
         $this->input = \Mockery::mock(ArgvInput::class);
-        $this->output = \Mockery::mock(ConsoleOutput::class);
-        $this->process = \Mockery::mock(Process::class.'[run,isSuccessful]', ['ls', '-alh']);
+        $this->output = \Mockery::mock(ConsoleOutput::class.'[writeln]');
+        $this->process = \Mockery::mock(Process::class.'[run,start,isSuccessful]', ['ls', '-alh']);
         $this->processBuilder = \Mockery::mock(ProcessBuilder::class);
     }
 }

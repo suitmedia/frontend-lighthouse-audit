@@ -38,7 +38,7 @@ class CanRetrieveInputValuesTests extends TestCase
      */
     protected static $keys = [
         'mode',
-        'url-prefix',
+        'server',
         'performance',
         'best-practices',
         'accessibility',
@@ -53,7 +53,7 @@ class CanRetrieveInputValuesTests extends TestCase
      */
     protected static $values = [
         'desktop',
-        'https://google.com/',
+        'localhost:9999',
         '95',
         '94',
         '96',
@@ -69,7 +69,7 @@ class CanRetrieveInputValuesTests extends TestCase
      */
     protected static $defaults = [
         Command::DEFAULT_MODE,
-        Command::DEFAULT_URL_PREFIX,
+        'http://'.Command::DEFAULT_SERVER.'/',
         Command::DEFAULT_PERFORMANCE,
         Command::DEFAULT_BEST_PRACTICES,
         Command::DEFAULT_ACCESSIBILITY,
@@ -87,7 +87,7 @@ class CanRetrieveInputValuesTests extends TestCase
         parent::setUp();
 
         $this->input->shouldReceive('getOption')
-            ->with('url-prefix')
+            ->with('server')
             ->times(1)
             ->andReturn(false);
 
@@ -138,6 +138,10 @@ class CanRetrieveInputValuesTests extends TestCase
             ->andReturn($value);
 
         $actual = $this->invokeMethod($this->audit, $method, [$key]);
+
+        if ($method === 'getUrlPrefix') {
+            $value = 'http://'.$value.'/';
+        }
 
         $this->assertEquals($value, $actual);
     }

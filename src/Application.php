@@ -24,7 +24,7 @@ final class Application extends AbstractApplication
      * @param string $name
      * @param string $version
      */
-    public function __construct(string $name = 'lighthouse-audit', string $version = '1.0.0')
+    public function __construct(string $name = 'lighthouse-audit', string $version = '0.2.0')
     {
         parent::__construct($name, $version);
     }

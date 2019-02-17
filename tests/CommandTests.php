@@ -69,8 +69,8 @@ class CommandTests extends TestCase
     public function it_can_be_executed()
     {
         $this->input->shouldReceive('getOption')
-            ->with('url-prefix')
-            ->andReturn('http://localhost:8000/');
+            ->with('server')
+            ->andReturn('localhost:8000');
 
         $this->input->shouldReceive('getOption')
             ->with('except')
@@ -105,6 +105,7 @@ class CommandTests extends TestCase
 
         $this->processBuilder->shouldReceive('create')
             ->andReturn($this->process);
+        $this->process->shouldReceive('start');
         $this->process->shouldReceive('run')
             ->andReturn(0);
         $this->process->shouldReceive('isSuccessful')

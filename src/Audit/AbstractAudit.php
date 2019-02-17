@@ -2,7 +2,7 @@
 
 namespace Suitmedia\LighthouseAudit\Audit;
 
-use Suitmedia\LighthouseAudit\Audit\Concerns\CanRetrieveInputValues;
+use Suitmedia\LighthouseAudit\Concerns\CanRetrieveInputValues;
 use Suitmedia\LighthouseAudit\ProcessBuilder;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;

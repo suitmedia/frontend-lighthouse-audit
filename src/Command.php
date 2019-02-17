@@ -4,7 +4,7 @@ namespace Suitmedia\LighthouseAudit;
 
 use LogicException;
 use Suitmedia\LighthouseAudit\Audit\AuditManager;
-use Suitmedia\LighthouseAudit\Audit\Concerns\SanitizeInput;
+use Suitmedia\LighthouseAudit\Concerns\SanitizeInput;
 use Symfony\Component\Console\Command\Command as AbstractCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -15,13 +15,20 @@ final class Command extends AbstractCommand
 {
     use SanitizeInput;
 
-    public const DEFAULT_URL_PREFIX = 'http://localhost:8000/';
+    public const DEFAULT_SERVER = 'localhost:8000';
     public const DEFAULT_MODE = 'mobile';
     public const DEFAULT_PERFORMANCE = '80';
     public const DEFAULT_BEST_PRACTICES = '80';
     public const DEFAULT_ACCESSIBILITY = '80';
     public const DEFAULT_SEO = '80';
     public const DEFAULT_PWA = '0';
+
+    /**
+     * Current web server instance.
+     *
+     * @var WebServer
+     */
+    protected $webServer;
 
     /**
      * Configures the lighthouse-audit command.
@@ -37,11 +44,11 @@ final class Command extends AbstractCommand
                 'Specify the path of a directory to analyse.'
             )])
             ->addOption(
-                'url-prefix',
-                null,
+                'server',
+                'S',
                 InputOption::VALUE_OPTIONAL,
-                'Define the url prefix that should be used when testing.',
-                self::DEFAULT_URL_PREFIX
+                'Define the address and port that PHP web-server should serve. <address>:<port>',
+                self::DEFAULT_SERVER
             )
             ->addOption(
                 'mode',
@@ -116,6 +123,7 @@ final class Command extends AbstractCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output) :int
     {
+        $this->startWebServer($input);
         $app = $this->getApplication();
         $excludedFiles = $this->getExcludedFiles($input);
 
@@ -139,6 +147,12 @@ final class Command extends AbstractCommand
             $audit->run();
         }
 
+        $output->writeln('');
+        $output->writeln('<info>All audits have completed without any issue.</info>');
+        $output->writeln('');
+
+        $this->webServer->stop();
+
         return 0;
     }
 
@@ -156,5 +170,16 @@ final class Command extends AbstractCommand
         $files = is_string($except) ? explode(',', $this->trimDoubleQuotes($except)) : [];
 
         return array_filter(array_map('trim', $files));
+    }
+
+    /**
+     * Create and start a new web server instance.
+     *
+     * @param InputInterface $input
+     */
+    protected function startWebServer(InputInterface $input) :void
+    {
+        $this->webServer = new WebServer($input, $this->getApplication()->getProcessBuilder());
+        $this->webServer->run();
     }
 }

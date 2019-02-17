@@ -1,6 +1,6 @@
 <?php
 
-namespace Suitmedia\LighthouseAudit\Audit\Concerns;
+namespace Suitmedia\LighthouseAudit\Concerns;
 
 trait SanitizeInput
 {

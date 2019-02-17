@@ -26,7 +26,7 @@ class MobileAuditTests extends TestCase
 
         $this->input = new ArgvInput([
             'lighthouse-audit',
-            '--url-prefix="http://localhost:8000/"',
+            '--server="localhost:8000"',
             '--chrome-flags="--one --two "',
             '--performance='.Command::DEFAULT_PERFORMANCE,
             '--best-practices='.Command::DEFAULT_BEST_PRACTICES,

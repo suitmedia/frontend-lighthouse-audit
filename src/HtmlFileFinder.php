@@ -3,9 +3,12 @@
 namespace Suitmedia\LighthouseAudit;
 
 use LogicException;
+use Suitmedia\LighthouseAudit\Concerns\CanResolveDocumentRoot;
 
 class HtmlFileFinder
 {
+    use CanResolveDocumentRoot;
+
     /**
      * Path to find HTML files.
      *
@@ -17,16 +20,11 @@ class HtmlFileFinder
      * HtmlFileFinder constructor.
      *
      * @param mixed $path
+     * @throws LogicException
      */
     public function __construct($path)
     {
-        $path = is_string($path) ? realpath($path) : realpath('.');
-
-        if ($path === false || !is_dir($path)) {
-            throw new LogicException('The given path is not a directory or directory is not exists.');
-        }
-
-        $this->path = $path;
+        $this->path = $this->getDocumentRoot($path);
     }
 
     /**
